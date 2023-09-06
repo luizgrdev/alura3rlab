@@ -58,6 +58,8 @@ class ReportFile implements Report
 
         $filename = $this->path . "/" . $sample->getCode() . ".txt";
 
+        if (file_exists($filename)) unlink($filename);
+
         if (!$fp = fopen($filename, 'a')) {
             echo "Erro ao abrir o ($filename)";
             exit;

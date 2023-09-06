@@ -7,14 +7,19 @@ use Alura3rlab\User\Technician;
 
 class Sample
 {
-    private int $code;
     private Packages $packages;
     private Customer $customer;
+    private ?Sample $main;
 
-    public function __construct(int $code) 
+    public function __construct() 
     {
-        $this->code = $code;
+        $this->code = $this->randCode();
         $this->packages = new Packages();
+    }
+
+    public function randCode() : int
+    {
+        return rand(100000000, 200000000);
     }
 
     public function getCode() : int
@@ -40,5 +45,10 @@ class Sample
     public function setCustomer(Customer $customer) : void
     {
         $this->customer = $customer;
+    }
+
+    public function __clone()
+    {
+        $this->code = $this->randCode();
     }
 }

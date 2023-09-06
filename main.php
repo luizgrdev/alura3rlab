@@ -10,11 +10,13 @@ $packages = array_map(function ($packageName) {
 }, ["Minerais básico", "Adicional FDA", "KPS"]);
 
 $facade = new AnalysisNutritionFacade(
-    ['code' => 19999999],
     ['name' => 'Cliente Teste', 'email' => 'cliente@teste.com', 'phone' => '35984757623'],
     $packages
 );
 
 $facade->setCustomer();
 $facade->setPackages();
+
+$facade->setClones(5);
+
 $facade->sendAnalysis();
